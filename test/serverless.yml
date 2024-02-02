@@ -1,0 +1,19 @@
+service: config-layer-test
+frameworkVersion: "3"
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-central-1
+
+package:
+  patterns:
+    - "!**"
+    - dist/**
+
+functions:
+  api:
+    handler: dist/handler.handler
+    events:
+      - httpApi: "*"
